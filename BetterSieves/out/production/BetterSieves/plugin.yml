@@ -1,7 +1,0 @@
-name: BetterSieves
-main: bet.ter.sieves.Sieve
-version: 1.0
-api-version: 1.13
-authors:
-  - "damianoR"
-  - "Gianluca_C"
