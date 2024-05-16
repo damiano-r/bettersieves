@@ -1,9 +1,8 @@
 # betterSieves
 Minecraft plugin for Spigot 1.12.2!
 
-Authors:
+Author:
 - damianoR
-- Gianluca_C
 
 This plugin adds Sieves to the normal gameplay!
 
