@@ -50,7 +50,7 @@ public class SieveEvents implements Listener {
             ItemStack redsand = new ItemStack(Material.SAND, 1, (short) 1); //item di riferimento per la sabbia rossa
 
             if (dropper.getName().contains("Sieve")) {  //se il dropper è un Setacciatore
-                if (above.getType().equals(Material.CHEST)){  //controlla se c'è la chest sopra il setacciatore, se non c'è.. NON VA AVANTI e viene mandato il msg al player per dire "u sc ciama mov que, a mett la chest senno ghe non t setacc nu cazz"
+                if (above.getType().equals(Material.CHEST)){  //controlla se c'è la chest sopra il setacciatore, se non c'è.. NON VA AVANTI e viene mandato il msg al player
                     if (dropper.getName().contains("Stone")) {  // se è il Setacciatore della Stone
                         taskStone = new BukkitRunnable() {  //si avvia il task
                             public void run() {
@@ -58,8 +58,8 @@ public class SieveEvents implements Listener {
                                     ItemStack is = dropper.getItem(i);  // prende l'item nello slot
                                     if (is != null) {  // se non è null o air
                                         if (is.getData().equals(stone.getData())) {  //se l'item è Stone pura.. Granite ecc hanno un DATA diverso da quello della Stone normale (0) e controlla appunto questo
-                                            if (is.getAmount() >= 4) {  //controllo se ci sono almeno 4 pezzi di stone all'interno, SENNO NON FUNZIONA PER UN CAZZO, variabile possibile da settare nel config, prossimamente, magari il VIP pagando ne processa di piu ecc ecc, anche se basta spammare con il click... da risolvere lo spam
-                                                for (int k = 0; k < 4; k++) { // && is.getType() != null && !is.getType().equals(Material.AIR) && is != null  <-- la tua schifezza per backup, alla fine non mi serve piu, si puo cancellare
+                                            if (is.getAmount() >= 4) {  //controllo se ci sono almeno 4 pezzi di stone all'interno, SENNO NON FUNZIONA, variabile possibile da settare nel config, prossimamente, magari il VIP pagando ne processa di piu ecc ecc, anche se basta spammare con il click... da risolvere lo spam
+                                                for (int k = 0; k < 4; k++) { 
                                                     Chest chest = (Chest) above.getState();
                                                     Inventory inv = chest.getInventory();
 
@@ -74,7 +74,7 @@ public class SieveEvents implements Listener {
                                                     } else //il caso in cui sia gravel o sand
                                                         inv.addItem(new ItemStack(Material.getMaterial(randMaterial)));
 
-                                                    is.setAmount(is.getAmount() - 1); //viene aggiornato il valore dello stack, non ho messo 4 perche ho pensato che si puo rendere dinamico mettendolo dal config il numero di item da processare e quindi poi OH SENTI NON DEVO DARTI SPIEGAZIONI
+                                                    is.setAmount(is.getAmount() - 1); //viene aggiornato il valore dello stack, non ho messo 4 perche ho pensato che si puo rendere dinamico mettendolo dal config il numero di item da processare
                                                 }
                                                 dropper.setItem(i, is); //il tuo setacciatore prendeva tutto lo stack o GLI STACK, li setacciava tutti e rip, qua invece NO, quattro pezzi alla volta
                                                 if (is.getAmount() < 4)
